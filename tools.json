@@ -1,0 +1,45 @@
+[
+  {
+    "name": "sg_pdpc_decisions_search",
+    "description": "Search Singapore Personal Data Protection Commission (PDPC) enforcement decisions against organisations under the Personal Data Protection Act: breaches with financial penalties or directions (protection, consent, retention, transfer, notification obligations), voluntary undertakings accepted by the Commission, and no-breach findings. Each hit gives the decision id, outcome, the organisation in the title and a link. Filter by a word in the organisation name or obligation (a company, 'protection obligation', 'Singtel') or by outcome (breach, voluntary_undertaking, no_breach, other). Decisions about individuals are dropped and counted in individuals_dropped. Example: query=\"protection obligation\", outcome=\"breach\". Use sg_pdpc_decision_get for the published date, penalty and summary.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Word in the organisation name or decision title (e.g. \"Singtel\", \"protection obligation\"). Optional."
+        },
+        "outcome": {
+          "type": "string",
+          "enum": [
+            "breach",
+            "voluntary_undertaking",
+            "no_breach",
+            "other"
+          ],
+          "description": "Only decisions with this outcome. Optional."
+        },
+        "limit": {
+          "type": "number",
+          "description": "Decisions to return (1-50, default 20)."
+        }
+      }
+    }
+  },
+  {
+    "name": "sg_pdpc_decision_get",
+    "description": "Get one Singapore Personal Data Protection Commission enforcement decision against an organisation by its id (such as breach-of-the-protection-obligation-by-myrepublic from sg_pdpc_decisions_search): the published title and date, the decision type, tags (obligation breached, Financial Penalty, sector), the summary text with the penalty amount, and links to the decision documents. An unknown id returns found:false; a decision about an individual returns found:false with empty_reason not_an_organisation. Example: id=\"breach-of-the-protection-obligation-by-myrepublic\".",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Decision id as returned by sg_pdpc_decisions_search."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "name": "@pipeworx/mcp-sg-pdpc-decisions",
+  "version": "0.1.0",
+  "description": "sg-pdpc-decisions -- Personal Data Protection Commission (Singapore) enforcement decisions against organisations: financial penalties, directions, voluntary undertakings and no-breach findings under the Personal Data Protection Act. Read live per call; nothing is stored.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "mcp-sg-pdpc-decisions": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "sg-pdpc-decisions"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pipeworx-io/mcp-sg-pdpc-decisions.git"
+  },
+  "mcpName": "io.github.pipeworx-io/sg-pdpc-decisions",
+  "pipeworx": {
+    "mode": "gateway",
+    "slug": "sg-pdpc-decisions",
+    "gatewaySlug": "sg-pdpc-decisions",
+    "sourceHash": "v1-03683450cd1fadebe7c17beaa982fc696354cfbf65504e57a0c3e33108f836a2",
+    "sourceCommit": "01fc48151e144f8b0923c0f986eb172c285e5e09"
+  }
+}
